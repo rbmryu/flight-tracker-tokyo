@@ -1,0 +1,510 @@
+<title>Passagens SP → Tóquio · Maratona 2027</title>
+<script type="application/json" id="routes-config">
+{
+  "search": {
+    "originIata": "GRU",
+    "destinationCity": "TYO",
+    "targetDepartureMonth": "2027-02",
+    "targetReturnMonth": "2027-03",
+    "currency": "usd",
+    "note": "TYO agrega Narita e Haneda no cache da Travelpayouts. A API nao filtra por data exata: 'overall' pega a tarifa ida-e-volta mais barata ja cacheada (data real exibida no dashboard); as estimativas por rota somam 2 trechos de ida separados (one_way) mais baratos ja cacheados. airlineCode e so informativo."
+  },
+  "routes": [
+    {
+      "id": "qatar-doh",
+      "region": "Oriente Medio",
+      "airline": "Qatar Airways",
+      "airlineCode": "QR",
+      "viaCity": "Doha",
+      "viaIata": "DOH",
+      "note": "Stopover gratuito oficial da Qatar em Doha"
+    },
+    {
+      "id": "emirates-dxb",
+      "region": "Oriente Medio",
+      "airline": "Emirates",
+      "airlineCode": "EK",
+      "viaCity": "Dubai",
+      "viaIata": "DXB",
+      "note": "Dubai com boa infra turistica para stopover"
+    },
+    {
+      "id": "turkish-ist",
+      "region": "Oriente Medio",
+      "airline": "Turkish Airlines",
+      "airlineCode": "TK",
+      "viaCity": "Istambul",
+      "viaIata": "IST",
+      "note": "Stopover program oficial da Turkish em Istambul"
+    },
+    {
+      "id": "airfrance-cdg",
+      "region": "Europa",
+      "airline": "Air France",
+      "airlineCode": "AF",
+      "viaCity": "Paris",
+      "viaIata": "CDG",
+      "note": null
+    },
+    {
+      "id": "klm-ams",
+      "region": "Europa",
+      "airline": "KLM",
+      "airlineCode": "KL",
+      "viaCity": "Amsterda",
+      "viaIata": "AMS",
+      "note": null
+    },
+    {
+      "id": "american-dfw",
+      "region": "EUA",
+      "airline": "American Airlines",
+      "airlineCode": "AA",
+      "viaCity": "Dallas",
+      "viaIata": "DFW",
+      "note": "Requer visto/ESTA dos EUA para o transito"
+    },
+    {
+      "id": "latam-jal-lax",
+      "region": "EUA",
+      "airline": "LATAM + JAL",
+      "airlineCode": "LA",
+      "viaCity": "Los Angeles",
+      "viaIata": "LAX",
+      "note": "Requer visto/ESTA dos EUA para o transito"
+    }
+  ]
+}
+</script>
+<script type="application/json" id="price-data">
+[]
+</script>
+<style>
+  .viz-root {
+    --surface-1:      #fcfcfb;
+    --page-plane:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --baseline:       #c3c2b7;
+    --border:         rgba(11,11,11,0.10);
+    --good:           #006300;
+
+    --series-1: #2a78d6; /* overall */
+    --series-2: #1baf7a; /* qatar-doh */
+    --series-3: #eda100; /* emirates-dxb */
+    --series-4: #008300; /* turkish-ist */
+    --series-5: #4a3aa7; /* airfrance-cdg */
+    --series-6: #e34948; /* klm-ams */
+    --series-7: #e87ba4; /* american-dfw */
+    --series-8: #eb6834; /* latam-jal-lax */
+  }
+  @media (prefers-color-scheme: dark) {
+    .viz-root {
+      --surface-1:      #1a1a19;
+      --page-plane:     #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --gridline:       #2c2c2a;
+      --baseline:       #383835;
+      --border:         rgba(255,255,255,0.10);
+      --good:           #0ca30c;
+
+      --series-1: #3987e5;
+      --series-2: #199e70;
+      --series-3: #c98500;
+      --series-4: #008300;
+      --series-5: #9085e9;
+      --series-6: #e66767;
+      --series-7: #d55181;
+      --series-8: #d95926;
+    }
+  }
+  :root[data-theme="dark"] .viz-root {
+    --surface-1:      #1a1a19;
+    --page-plane:     #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --gridline:       #2c2c2a;
+    --baseline:       #383835;
+    --border:         rgba(255,255,255,0.10);
+    --good:           #0ca30c;
+    --series-1: #3987e5; --series-2: #199e70; --series-3: #c98500; --series-4: #008300;
+    --series-5: #9085e9; --series-6: #e66767; --series-7: #d55181; --series-8: #d95926;
+  }
+  :root[data-theme="light"] .viz-root {
+    --surface-1:      #fcfcfb;
+    --page-plane:     #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --gridline:       #e1e0d9;
+    --baseline:       #c3c2b7;
+    --border:         rgba(11,11,11,0.10);
+    --good:           #006300;
+    --series-1: #2a78d6; --series-2: #1baf7a; --series-3: #eda100; --series-4: #008300;
+    --series-5: #4a3aa7; --series-6: #e34948; --series-7: #e87ba4; --series-8: #eb6834;
+  }
+
+  .viz-root {
+    background: var(--page-plane);
+    color: var(--text-primary);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 24px 20px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .viz-root * { box-sizing: border-box; }
+
+  header.top { margin-bottom: 20px; }
+  header.top h1 { font-size: 22px; margin: 0 0 4px; font-weight: 600; }
+  header.top .subline { color: var(--text-secondary); font-size: 14px; }
+  .countdown {
+    display: inline-flex; align-items: baseline; gap: 6px;
+    margin-top: 10px; padding: 6px 12px; border-radius: 8px;
+    background: var(--surface-1); border: 1px solid var(--border);
+    font-size: 13px; color: var(--text-secondary);
+  }
+  .countdown strong { font-size: 15px; color: var(--text-primary); font-weight: 600; }
+
+  .tiles {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 12px; margin-bottom: 24px;
+  }
+  .tile {
+    background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .tile .label { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 6px; }
+  .tile .value { font-size: 26px; font-weight: 600; line-height: 1.1; }
+  .tile .value .cur { font-size: 14px; color: var(--text-muted); font-weight: 500; margin-right: 2px; }
+  .tile .meta { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+  .tile .delta { font-size: 12px; margin-top: 4px; }
+  .tile .delta.down { color: var(--good); }
+  .tile .delta.up { color: var(--series-6); }
+
+  section.card {
+    background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 18px 8px; margin-bottom: 20px;
+    overflow-x: auto;
+  }
+  section.card h2 { font-size: 15px; margin: 0 0 4px; font-weight: 600; }
+  section.card .card-sub { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 12px; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 12px 18px; margin: 6px 0 14px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-secondary); }
+  .legend-swatch { width: 14px; height: 2px; border-radius: 1px; }
+
+  .chart-wrap { position: relative; min-width: 560px; }
+  svg.chart { display: block; width: 100%; height: auto; overflow: visible; }
+  .gridline { stroke: var(--gridline); stroke-width: 1; }
+  .baseline { stroke: var(--baseline); stroke-width: 1; }
+  .axis-label { fill: var(--text-muted); font-size: 11px; }
+  .end-label { fill: var(--text-primary); font-size: 11.5px; font-weight: 600; }
+  .series-line { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .series-dot { stroke: var(--surface-1); stroke-width: 2; }
+
+  .crosshair-line { stroke: var(--text-muted); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0; pointer-events: none; }
+  .hover-capture { fill: transparent; cursor: crosshair; }
+  .tooltip {
+    position: absolute; pointer-events: none; opacity: 0; transition: opacity .08s;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 10px; font-size: 12px; box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    min-width: 150px; z-index: 5;
+  }
+  .tooltip .t-date { color: var(--text-secondary); font-size: 11.5px; margin-bottom: 4px; }
+  .tooltip .t-row { display: flex; align-items: center; gap: 6px; padding: 1px 0; }
+  .tooltip .t-key { width: 10px; height: 2px; flex: none; border-radius: 1px; }
+  .tooltip .t-name { color: var(--text-secondary); flex: 1; }
+  .tooltip .t-val { font-weight: 600; color: var(--text-primary); }
+
+  table.cmp { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 640px; }
+  table.cmp th, table.cmp td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--gridline); }
+  table.cmp th { color: var(--text-muted); font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: .02em; }
+  table.cmp td.price { font-variant-numeric: tabular-nums; font-weight: 600; }
+  table.cmp td.note { color: var(--text-secondary); font-size: 12px; }
+  .badge { display: inline-block; font-size: 10.5px; padding: 2px 6px; border-radius: 5px; border: 1px solid var(--border); color: var(--text-secondary); }
+  .badge.real { color: var(--good); border-color: var(--good); }
+  .swatch-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+
+  footer.notes { font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-top: 8px; }
+  footer.notes p { margin: 0 0 8px; }
+</style>
+
+<div class="viz-root">
+  <header class="top">
+    <h1>Passagens São Paulo → Tóquio</h1>
+    <div class="subline">Maratona de Tóquio · 07/03/2027 — monitoramento diário de preços (GRU → TYO)</div>
+    <div class="countdown" id="countdown"></div>
+  </header>
+
+  <div class="tiles" id="tiles"></div>
+
+  <section class="card">
+    <h2>Tendência de preço</h2>
+    <div class="card-sub">Ida-e-volta, GRU–TYO. Linha azul = tarifa real mais barata em cache; demais linhas = estimativa por rota com escala (soma de 2 trechos só-ida).</div>
+    <div class="legend" id="legend"></div>
+    <div class="chart-wrap">
+      <svg class="chart" id="chart" viewBox="0 0 980 320" preserveAspectRatio="xMidYMid meet"></svg>
+      <div class="tooltip" id="tooltip"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Comparativo atual</h2>
+    <div class="card-sub">Snapshot mais recente por rota. Estimativas somam 2 trechos só-ida — um bilhete único com stopover costuma sair mais barato.</div>
+    <table class="cmp" id="cmpTable"></table>
+  </section>
+
+  <section class="card">
+    <footer class="notes">
+      <p><strong>Fonte:</strong> Travelpayouts Data API (cache de buscas reais da Aviasales e parceiros). "Real" = tarifa ida-e-volta mais barata já cacheada para GRU–TYO. "Estimativa" = soma da tarifa só-ida mais barata GRU→escala + escala→TYO; não é o preço de um bilhete único com stopover, que em geral sai mais barato que a soma.</p>
+      <p>Datas mostradas em cada trecho são as datas reais da oferta encontrada no cache — nem sempre coincidem exatamente com a janela de viagem alvo (saída 27–28/fev, volta 20–21/mar/2027), já que o cache reflete buscas recentes de outros usuários.</p>
+    </footer>
+  </section>
+</div>
+
+<script>
+(function () {
+  const routesConfig = JSON.parse(document.getElementById('routes-config').textContent);
+  const priceData = JSON.parse(document.getElementById('price-data').textContent);
+  const routeMeta = Object.fromEntries(routesConfig.routes.map(r => [r.id, r]));
+
+  const SERIES_ORDER = ['overall', ...routesConfig.routes.map(r => r.id)];
+  const SERIES_LABEL = {
+    overall: 'Geral (mais barato encontrado)',
+    ...Object.fromEntries(routesConfig.routes.map(r => [r.id, `${r.airline} · ${r.viaCity}`]))
+  };
+  const seriesColor = (id) => `var(--series-${SERIES_ORDER.indexOf(id) + 1})`;
+
+  // --- group by routeId, sorted by timestamp ---
+  const byRoute = {};
+  for (const row of priceData) {
+    (byRoute[row.routeId] = byRoute[row.routeId] || []).push(row);
+  }
+  for (const id in byRoute) byRoute[id].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+  const fmtMoney = (v, cur) => `${(cur || 'usd').toUpperCase()} ${Math.round(v).toLocaleString('pt-BR')}`;
+  const fmtDate = (iso) => new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
+  const fmtDateTime = (iso) => new Date(iso).toLocaleString('pt-BR', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+
+  // ---------- countdown ----------
+  const marathon = new Date('2027-03-07T00:00:00');
+  const now = new Date();
+  const days = Math.ceil((marathon - now) / 86400000);
+  document.getElementById('countdown').innerHTML =
+    days >= 0 ? `<strong>${days}</strong>&nbsp;dias até a Maratona de Tóquio` : 'Maratona já ocorreu';
+
+  // ---------- stat tiles ----------
+  const latestByRoute = {};
+  for (const id in byRoute) latestByRoute[id] = byRoute[id][byRoute[id].length - 1];
+
+  const tiles = [];
+  const overallLatest = latestByRoute['overall'];
+  const overallSeries = byRoute['overall'] || [];
+  const overallPrev = overallSeries.length > 1 ? overallSeries[overallSeries.length - 2] : null;
+
+  if (overallLatest) {
+    let deltaHtml = '';
+    if (overallPrev) {
+      const diff = overallLatest.price - overallPrev.price;
+      const cls = diff <= 0 ? 'down' : 'up';
+      const sign = diff > 0 ? '+' : '';
+      deltaHtml = `<div class="delta ${cls}">${sign}${Math.round(diff)} desde última checagem</div>`;
+    }
+    tiles.push(`
+      <div class="tile">
+        <div class="label">Menor tarifa real encontrada</div>
+        <div class="value"><span class="cur">${overallLatest.currency.toUpperCase()}</span>${Math.round(overallLatest.price).toLocaleString('pt-BR')}</div>
+        <div class="meta">${overallLatest.airline || '—'} · ida ${overallLatest.departureAt ? fmtDate(overallLatest.departureAt) : '—'}</div>
+        ${deltaHtml}
+      </div>`);
+  }
+
+  const regions = ['Oriente Médio', 'Europa', 'EUA'];
+  for (const region of regions) {
+    const inRegion = Object.values(latestByRoute).filter(r => r.region === region && r.kind === 'estimate');
+    if (!inRegion.length) continue;
+    const cheapest = inRegion.reduce((a, b) => (a.price < b.price ? a : b));
+    tiles.push(`
+      <div class="tile">
+        <div class="label">Melhor estimativa · ${region}</div>
+        <div class="value"><span class="cur">${cheapest.currency.toUpperCase()}</span>${Math.round(cheapest.price).toLocaleString('pt-BR')}</div>
+        <div class="meta">${cheapest.airline} via ${cheapest.viaCity}</div>
+      </div>`);
+  }
+  document.getElementById('tiles').innerHTML = tiles.join('');
+
+  // ---------- legend ----------
+  document.getElementById('legend').innerHTML = SERIES_ORDER
+    .filter(id => byRoute[id])
+    .map(id => `<div class="legend-item"><span class="legend-swatch" style="background:${seriesColor(id)}"></span>${SERIES_LABEL[id]}</div>`)
+    .join('');
+
+  // ---------- chart ----------
+  const svg = document.getElementById('chart');
+  const tooltip = document.getElementById('tooltip');
+  const W = 980, H = 320, PAD_L = 56, PAD_R = 16, PAD_T = 16, PAD_B = 30;
+  const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
+
+  const allTimestamps = [...new Set(priceData.map(d => d.timestamp))].sort((a, b) => new Date(a) - new Date(b));
+  const allPrices = priceData.map(d => d.price);
+  let yMin = Math.min(...allPrices), yMax = Math.max(...allPrices);
+  const yPad = Math.max((yMax - yMin) * 0.15, 20);
+  yMin = Math.max(0, Math.floor((yMin - yPad) / 50) * 50);
+  yMax = Math.ceil((yMax + yPad) / 50) * 50;
+
+  const xFor = (ts) => {
+    if (allTimestamps.length === 1) return PAD_L + plotW / 2;
+    const idx = allTimestamps.indexOf(ts);
+    return PAD_L + (idx / (allTimestamps.length - 1)) * plotW;
+  };
+  const yFor = (v) => PAD_T + plotH - ((v - yMin) / (yMax - yMin)) * plotH;
+
+  let svgHtml = '';
+
+  // gridlines + y ticks (4 steps)
+  const ySteps = 4;
+  for (let i = 0; i <= ySteps; i++) {
+    const v = yMin + ((yMax - yMin) * i) / ySteps;
+    const y = yFor(v);
+    svgHtml += `<line class="gridline" x1="${PAD_L}" x2="${W - PAD_R}" y1="${y}" y2="${y}" />`;
+    svgHtml += `<text class="axis-label" x="${PAD_L - 8}" y="${y + 4}" text-anchor="end">${Math.round(v).toLocaleString('pt-BR')}</text>`;
+  }
+  // baseline
+  svgHtml += `<line class="baseline" x1="${PAD_L}" x2="${W - PAD_R}" y1="${PAD_T + plotH}" y2="${PAD_T + plotH}" />`;
+  // x ticks
+  allTimestamps.forEach((ts) => {
+    const x = xFor(ts);
+    svgHtml += `<text class="axis-label" x="${x}" y="${H - 8}" text-anchor="middle">${fmtDate(ts)}</text>`;
+  });
+
+  // find current cheapest route (for direct label besides overall)
+  let cheapestRouteId = null, cheapestVal = Infinity;
+  for (const id in latestByRoute) {
+    if (id === 'overall') continue;
+    if (latestByRoute[id].price < cheapestVal) { cheapestVal = latestByRoute[id].price; cheapestRouteId = id; }
+  }
+
+  SERIES_ORDER.forEach((id) => {
+    const pts = byRoute[id];
+    if (!pts || !pts.length) return;
+    const color = seriesColor(id);
+    const coords = pts.map(p => [xFor(p.timestamp), yFor(p.price)]);
+
+    if (coords.length > 1) {
+      const d = coords.map((c, i) => (i === 0 ? `M${c[0]},${c[1]}` : `L${c[0]},${c[1]}`)).join(' ');
+      svgHtml += `<path class="series-line" d="${d}" stroke="${color}" />`;
+    }
+    coords.forEach(([x, y]) => {
+      svgHtml += `<circle class="series-dot" cx="${x}" cy="${y}" r="4" fill="${color}" />`;
+    });
+
+    if (id === 'overall' || id === cheapestRouteId) {
+      const [lx, ly] = coords[coords.length - 1];
+      const label = id === 'overall' ? 'geral' : (routeMeta[id] ? routeMeta[id].viaCity : id);
+      svgHtml += `<text class="end-label" x="${lx + 8}" y="${ly + 4}">${label}</text>`;
+    }
+  });
+
+  // crosshair + hover capture
+  svgHtml += `<line class="crosshair-line" id="crosshair" x1="0" x2="0" y1="${PAD_T}" y2="${PAD_T + plotH}" />`;
+  svgHtml += `<rect class="hover-capture" id="hoverCapture" x="${PAD_L}" y="${PAD_T}" width="${plotW}" height="${plotH}" />`;
+
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.innerHTML = svgHtml;
+
+  const crosshair = document.getElementById('crosshair');
+  const hoverCapture = document.getElementById('hoverCapture');
+  const chartWrap = document.querySelector('.chart-wrap');
+
+  function nearestTsIndex(mouseX) {
+    if (allTimestamps.length === 1) return 0;
+    const rel = (mouseX - PAD_L) / plotW;
+    const idx = Math.round(rel * (allTimestamps.length - 1));
+    return Math.min(Math.max(idx, 0), allTimestamps.length - 1);
+  }
+
+  function showTooltip(evtX, evtY, tsIndex) {
+    const ts = allTimestamps[tsIndex];
+    const x = xFor(ts);
+    crosshair.setAttribute('x1', x);
+    crosshair.setAttribute('x2', x);
+    crosshair.style.opacity = 1;
+
+    let rows = '';
+    SERIES_ORDER.forEach((id) => {
+      const pt = (byRoute[id] || []).find(p => p.timestamp === ts);
+      if (!pt) return;
+      rows += `<div class="t-row"><span class="t-key" style="background:${seriesColor(id)}"></span><span class="t-name">${SERIES_LABEL[id]}</span><span class="t-val">${fmtMoney(pt.price, pt.currency)}</span></div>`;
+    });
+    tooltip.innerHTML = `<div class="t-date">${fmtDateTime(ts)}</div>${rows}`;
+    tooltip.style.opacity = 1;
+    const wrapRect = chartWrap.getBoundingClientRect();
+    let left = evtX - wrapRect.left + 14;
+    let top = evtY - wrapRect.top - 10;
+    if (left + 170 > wrapRect.width) left = evtX - wrapRect.left - 184;
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = Math.max(top, 0) + 'px';
+  }
+
+  function hideTooltip() {
+    crosshair.style.opacity = 0;
+    tooltip.style.opacity = 0;
+  }
+
+  hoverCapture.addEventListener('pointermove', (e) => {
+    const rect = svg.getBoundingClientRect();
+    const scaleX = W / rect.width;
+    const mouseX = (e.clientX - rect.left) * scaleX;
+    showTooltip(e.clientX, e.clientY, nearestTsIndex(mouseX));
+  });
+  hoverCapture.addEventListener('pointerleave', hideTooltip);
+
+  // ---------- comparison table ----------
+  const rowsHtml = [];
+  if (overallLatest) {
+    rowsHtml.push(`
+      <tr>
+        <td><span class="swatch-dot" style="background:${seriesColor('overall')}"></span>Geral</td>
+        <td>${overallLatest.airline || '—'}</td>
+        <td>—</td>
+        <td class="price">${fmtMoney(overallLatest.price, overallLatest.currency)}</td>
+        <td><span class="badge real">real</span></td>
+        <td class="note">Ida ${overallLatest.departureAt ? fmtDate(overallLatest.departureAt) : '—'} · volta ${overallLatest.returnAt ? fmtDate(overallLatest.returnAt) : '—'}</td>
+      </tr>`);
+  }
+  routesConfig.routes.forEach((r) => {
+    const row = latestByRoute[r.id];
+    if (!row) {
+      rowsHtml.push(`
+        <tr>
+          <td><span class="swatch-dot" style="background:${seriesColor(r.id)}"></span>${r.region}</td>
+          <td>${r.airline}</td>
+          <td>${r.viaCity}</td>
+          <td class="price">—</td>
+          <td><span class="badge">sem dado</span></td>
+          <td class="note">${r.note || ''}</td>
+        </tr>`);
+      return;
+    }
+    rowsHtml.push(`
+      <tr>
+        <td><span class="swatch-dot" style="background:${seriesColor(r.id)}"></span>${r.region}</td>
+        <td>${r.airline}</td>
+        <td>${r.viaCity}</td>
+        <td class="price">${fmtMoney(row.price, row.currency)}</td>
+        <td><span class="badge">estimativa</span></td>
+        <td class="note">${r.note ? r.note + ' · ' : ''}GRU→${r.viaIata} ${fmtMoney(row.leg1Price, row.currency)} + ${r.viaIata}→TYO ${fmtMoney(row.leg2Price, row.currency)}</td>
+      </tr>`);
+  });
+
+  document.getElementById('cmpTable').innerHTML = `
+    <thead><tr><th>Região</th><th>Companhia</th><th>Escala</th><th>Preço</th><th>Tipo</th><th>Detalhe</th></tr></thead>
+    <tbody>${rowsHtml.join('')}</tbody>`;
+})();
+</script>

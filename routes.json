@@ -1,0 +1,19 @@
+{
+  "search": {
+    "originIata": "GRU",
+    "destinationCity": "TYO",
+    "targetDepartureMonth": "2027-02",
+    "targetReturnMonth": "2027-03",
+    "currency": "usd",
+    "note": "TYO agrega Narita e Haneda no cache da Travelpayouts. A API nao filtra por data exata: 'overall' pega a tarifa ida-e-volta mais barata ja cacheada (data real exibida no dashboard); as estimativas por rota somam 2 trechos de ida separados (one_way) mais baratos ja cacheados. airlineCode e so informativo."
+  },
+  "routes": [
+    { "id": "qatar-doh", "region": "Oriente Medio", "airline": "Qatar Airways", "airlineCode": "QR", "viaCity": "Doha", "viaIata": "DOH", "note": "Stopover gratuito oficial da Qatar em Doha" },
+    { "id": "emirates-dxb", "region": "Oriente Medio", "airline": "Emirates", "airlineCode": "EK", "viaCity": "Dubai", "viaIata": "DXB", "note": "Dubai com boa infra turistica para stopover" },
+    { "id": "turkish-ist", "region": "Oriente Medio", "airline": "Turkish Airlines", "airlineCode": "TK", "viaCity": "Istambul", "viaIata": "IST", "note": "Stopover program oficial da Turkish em Istambul" },
+    { "id": "airfrance-cdg", "region": "Europa", "airline": "Air France", "airlineCode": "AF", "viaCity": "Paris", "viaIata": "CDG", "note": null },
+    { "id": "klm-ams", "region": "Europa", "airline": "KLM", "airlineCode": "KL", "viaCity": "Amsterda", "viaIata": "AMS", "note": null },
+    { "id": "american-dfw", "region": "EUA", "airline": "American Airlines", "airlineCode": "AA", "viaCity": "Dallas", "viaIata": "DFW", "note": "Requer visto/ESTA dos EUA para o transito" },
+    { "id": "latam-jal-lax", "region": "EUA", "airline": "LATAM + JAL", "airlineCode": "LA", "viaCity": "Los Angeles", "viaIata": "LAX", "note": "Requer visto/ESTA dos EUA para o transito" }
+  ]
+}
