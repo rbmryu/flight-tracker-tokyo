@@ -32,16 +32,6 @@ def get_cheapest_roundtrip(origin, destination, currency, token):
     cheapest = min(offers, key=lambda o: float(o["price"]))
     return {"price": float(cheapest["price"]), "airline": cheapest.get("airline"), "departureAt": cheapest.get("departure_at"), "returnAt": cheapest.get("return_at")}
 
-def get_cheapest_oneway(origin, destination, currency, token):
-    resp = api_get("/v2/prices/latest", {"origin": origin, "destination": destination, "currency": currency, "one_way": "true", "sorting": "price", "limit": 1}, token)
-    if not resp or not resp.get("success") or not resp.get("data"):
-        return None
-    data = resp["data"]
-    if not data:
-        return None
-    best = data[0]
-    return {"price": float(best["value"]), "departDate": best.get("depart_date")}
-
 def load_json(path, default):
     if not os.path.exists(path):
         return default
@@ -66,15 +56,6 @@ def main():
         print(f"overall: {search['currency']} {overall['price']} (cia {overall['airline']})")
     else:
         print("AVISO: overall sem oferta encontrada", file=sys.stderr)
-    for route in routes_config["routes"]:
-        leg1 = get_cheapest_oneway(search["originIata"], route["viaIata"], search["currency"], token)
-        leg2 = get_cheapest_oneway(route["viaIata"], search["destinationCity"], search["currency"], token)
-        if leg1 and leg2:
-            total = leg1["price"] + leg2["price"]
-            new_entries.append({"timestamp": timestamp, "routeId": route["id"], "region": route["region"], "airline": route["airline"], "viaCity": route["viaCity"], "leg1Price": leg1["price"], "leg1Date": leg1["departDate"], "leg2Price": leg2["price"], "leg2Date": leg2["departDate"], "price": total, "currency": search["currency"], "kind": "estimate"})
-            print(f"{route['id']}: {search['currency']} {total} (GRU-{route['viaIata']} {leg1['price']} + {route['viaIata']}-TYO {leg2['price']})")
-        else:
-            print(f"AVISO: {route['id']} dados insuficientes (leg1={bool(leg1)}, leg2={bool(leg2)})", file=sys.stderr)
     history.extend(new_entries)
     os.makedirs(os.path.dirname(HISTORY_PATH), exist_ok=True)
     with open(HISTORY_PATH, "w", encoding="utf-8") as f:
