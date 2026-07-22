@@ -11,18 +11,195 @@
     "note": "SerpApi Google Flights: overall e round trip simples GRU-NRT (type=1). Cada rota e busca multi-cidade real (type=3) GRU->via->NRT->GRU. Todos os precos sao reais."
   },
   "routes": [
-    { "id": "qatar-doh", "region": "Oriente Medio", "airline": "Qatar Airways", "airlineCode": "QR", "viaCity": "Doha", "viaIata": "DOH", "note": "Stopover gratuito oficial da Qatar em Doha" },
-    { "id": "emirates-dxb", "region": "Oriente Medio", "airline": "Emirates", "airlineCode": "EK", "viaCity": "Dubai", "viaIata": "DXB", "note": "Dubai com boa infra turistica para stopover" },
-    { "id": "turkish-ist", "region": "Oriente Medio", "airline": "Turkish Airlines", "airlineCode": "TK", "viaCity": "Istambul", "viaIata": "IST", "note": "Stopover program oficial da Turkish em Istambul" },
-    { "id": "airfrance-cdg", "region": "Europa", "airline": "Air France", "airlineCode": "AF", "viaCity": "Paris", "viaIata": "CDG", "note": null },
-    { "id": "klm-ams", "region": "Europa", "airline": "KLM", "airlineCode": "KL", "viaCity": "Amsterda", "viaIata": "AMS", "note": null },
-    { "id": "american-dfw", "region": "EUA", "airline": "American Airlines", "airlineCode": "AA", "viaCity": "Dallas", "viaIata": "DFW", "note": "Requer visto/ESTA dos EUA para o transito" },
-    { "id": "latam-jal-lax", "region": "EUA", "airline": "LATAM + JAL", "airlineCode": "LA", "viaCity": "Los Angeles", "viaIata": "LAX", "note": "Requer visto/ESTA dos EUA para o transito" }
+    {
+      "id": "qatar-doh",
+      "region": "Oriente Medio",
+      "airline": "Qatar Airways",
+      "airlineCode": "QR",
+      "viaCity": "Doha",
+      "viaIata": "DOH",
+      "note": "Stopover gratuito oficial da Qatar em Doha"
+    },
+    {
+      "id": "emirates-dxb",
+      "region": "Oriente Medio",
+      "airline": "Emirates",
+      "airlineCode": "EK",
+      "viaCity": "Dubai",
+      "viaIata": "DXB",
+      "note": "Dubai com boa infra turistica para stopover"
+    },
+    {
+      "id": "turkish-ist",
+      "region": "Oriente Medio",
+      "airline": "Turkish Airlines",
+      "airlineCode": "TK",
+      "viaCity": "Istambul",
+      "viaIata": "IST",
+      "note": "Stopover program oficial da Turkish em Istambul"
+    },
+    {
+      "id": "airfrance-cdg",
+      "region": "Europa",
+      "airline": "Air France",
+      "airlineCode": "AF",
+      "viaCity": "Paris",
+      "viaIata": "CDG",
+      "note": null
+    },
+    {
+      "id": "klm-ams",
+      "region": "Europa",
+      "airline": "KLM",
+      "airlineCode": "KL",
+      "viaCity": "Amsterda",
+      "viaIata": "AMS",
+      "note": null
+    },
+    {
+      "id": "american-dfw",
+      "region": "EUA",
+      "airline": "American Airlines",
+      "airlineCode": "AA",
+      "viaCity": "Dallas",
+      "viaIata": "DFW",
+      "note": "Requer visto/ESTA dos EUA para o transito"
+    },
+    {
+      "id": "latam-jal-lax",
+      "region": "EUA",
+      "airline": "LATAM + JAL",
+      "airlineCode": "LA",
+      "viaCity": "Los Angeles",
+      "viaIata": "LAX",
+      "note": "Requer visto/ESTA dos EUA para o transito"
+    }
   ]
 }
 </script>
 <script type="application/json" id="price-data">
-[]
+[
+  {
+    "timestamp": "2026-07-21T18:21:11Z",
+    "routeId": "overall",
+    "region": "Geral",
+    "airline": "TK",
+    "viaCity": null,
+    "departureAt": "2027-02-02T17:10:00-03:00",
+    "returnAt": "2027-02-28T10:10:00+09:00",
+    "price": 1241.0,
+    "currency": "usd",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-21T19:20:44Z",
+    "routeId": "overall",
+    "region": "Geral",
+    "airline": "TK",
+    "viaCity": null,
+    "departureAt": "2027-02-02T17:10:00-03:00",
+    "returnAt": "2027-02-28T10:10:00+09:00",
+    "price": 1241.0,
+    "currency": "usd",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-22T01:07:15Z",
+    "routeId": "overall",
+    "region": "Geral",
+    "airline": "American",
+    "viaCity": null,
+    "departureAt": "2027-02-27 22:35",
+    "returnAt": "2027-03-01 14:45",
+    "price": 1704.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-22T01:07:15Z",
+    "routeId": "qatar-doh",
+    "region": "Oriente Medio",
+    "airline": "Qatar Airways",
+    "viaCity": "Doha",
+    "departureAt": "2027-02-27 20:25",
+    "returnAt": "2027-02-28 15:55",
+    "price": 2130.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-22T01:07:15Z",
+    "routeId": "emirates-dxb",
+    "region": "Oriente Medio",
+    "airline": "Emirates",
+    "viaCity": "Dubai",
+    "departureAt": "2027-02-27 01:30",
+    "returnAt": "2027-02-27 22:35",
+    "price": 1611.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-22T01:07:15Z",
+    "routeId": "turkish-ist",
+    "region": "Oriente Medio",
+    "airline": "ITA",
+    "viaCity": "Istambul",
+    "departureAt": "2027-02-27 15:45",
+    "returnAt": "2027-02-28 15:55",
+    "price": 2495.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-22T01:07:15Z",
+    "routeId": "airfrance-cdg",
+    "region": "Europa",
+    "airline": "British Airways",
+    "viaCity": "Paris",
+    "departureAt": "2027-02-27 16:10",
+    "returnAt": "2027-02-28 10:40",
+    "price": 2554.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-22T01:07:15Z",
+    "routeId": "klm-ams",
+    "region": "Europa",
+    "airline": "United",
+    "viaCity": "Amsterda",
+    "departureAt": "2027-02-27 21:45",
+    "returnAt": "2027-03-01 07:15",
+    "price": 2349.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-22T01:07:15Z",
+    "routeId": "american-dfw",
+    "region": "EUA",
+    "airline": "American",
+    "viaCity": "Dallas",
+    "departureAt": "2027-02-27 22:45",
+    "returnAt": "2027-02-28 06:15",
+    "price": 1704.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-22T01:07:15Z",
+    "routeId": "latam-jal-lax",
+    "region": "EUA",
+    "airline": "United",
+    "viaCity": "Los Angeles",
+    "departureAt": "2027-02-27 22:25",
+    "returnAt": "2027-02-28 11:20",
+    "price": 1748.0,
+    "currency": "USD",
+    "kind": "real"
+  }
+]
 </script>
 <style>
   .viz-root {
