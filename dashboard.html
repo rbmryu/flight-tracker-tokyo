@@ -3,190 +3,26 @@
 {
   "search": {
     "originIata": "GRU",
-    "destinationCity": "TYO",
-    "targetDepartureMonth": "2027-02",
-    "targetReturnMonth": "2027-03",
-    "currency": "usd",
-    "note": "TYO agrega Narita e Haneda no cache da Travelpayouts. A API nao filtra por data exata: 'overall' pega a tarifa ida-e-volta mais barata ja cacheada (data real exibida no dashboard); as estimativas por rota somam 2 trechos de ida separados (one_way) mais baratos ja cacheados. airlineCode e so informativo."
+    "destinationIata": "NRT",
+    "outboundDate": "2027-02-27",
+    "connectDate": "2027-03-01",
+    "returnDate": "2027-03-20",
+    "currency": "USD",
+    "note": "SerpApi Google Flights: overall e round trip simples GRU-NRT (type=1). Cada rota e busca multi-cidade real (type=3) GRU->via->NRT->GRU. Todos os precos sao reais."
   },
   "routes": [
-    {
-      "id": "qatar-doh",
-      "region": "Oriente Medio",
-      "airline": "Qatar Airways",
-      "airlineCode": "QR",
-      "viaCity": "Doha",
-      "viaIata": "DOH",
-      "note": "Stopover gratuito oficial da Qatar em Doha"
-    },
-    {
-      "id": "emirates-dxb",
-      "region": "Oriente Medio",
-      "airline": "Emirates",
-      "airlineCode": "EK",
-      "viaCity": "Dubai",
-      "viaIata": "DXB",
-      "note": "Dubai com boa infra turistica para stopover"
-    },
-    {
-      "id": "turkish-ist",
-      "region": "Oriente Medio",
-      "airline": "Turkish Airlines",
-      "airlineCode": "TK",
-      "viaCity": "Istambul",
-      "viaIata": "IST",
-      "note": "Stopover program oficial da Turkish em Istambul"
-    },
-    {
-      "id": "airfrance-cdg",
-      "region": "Europa",
-      "airline": "Air France",
-      "airlineCode": "AF",
-      "viaCity": "Paris",
-      "viaIata": "CDG",
-      "note": null
-    },
-    {
-      "id": "klm-ams",
-      "region": "Europa",
-      "airline": "KLM",
-      "airlineCode": "KL",
-      "viaCity": "Amsterda",
-      "viaIata": "AMS",
-      "note": null
-    },
-    {
-      "id": "american-dfw",
-      "region": "EUA",
-      "airline": "American Airlines",
-      "airlineCode": "AA",
-      "viaCity": "Dallas",
-      "viaIata": "DFW",
-      "note": "Requer visto/ESTA dos EUA para o transito"
-    },
-    {
-      "id": "latam-jal-lax",
-      "region": "EUA",
-      "airline": "LATAM + JAL",
-      "airlineCode": "LA",
-      "viaCity": "Los Angeles",
-      "viaIata": "LAX",
-      "note": "Requer visto/ESTA dos EUA para o transito"
-    }
+    { "id": "qatar-doh", "region": "Oriente Medio", "airline": "Qatar Airways", "airlineCode": "QR", "viaCity": "Doha", "viaIata": "DOH", "note": "Stopover gratuito oficial da Qatar em Doha" },
+    { "id": "emirates-dxb", "region": "Oriente Medio", "airline": "Emirates", "airlineCode": "EK", "viaCity": "Dubai", "viaIata": "DXB", "note": "Dubai com boa infra turistica para stopover" },
+    { "id": "turkish-ist", "region": "Oriente Medio", "airline": "Turkish Airlines", "airlineCode": "TK", "viaCity": "Istambul", "viaIata": "IST", "note": "Stopover program oficial da Turkish em Istambul" },
+    { "id": "airfrance-cdg", "region": "Europa", "airline": "Air France", "airlineCode": "AF", "viaCity": "Paris", "viaIata": "CDG", "note": null },
+    { "id": "klm-ams", "region": "Europa", "airline": "KLM", "airlineCode": "KL", "viaCity": "Amsterda", "viaIata": "AMS", "note": null },
+    { "id": "american-dfw", "region": "EUA", "airline": "American Airlines", "airlineCode": "AA", "viaCity": "Dallas", "viaIata": "DFW", "note": "Requer visto/ESTA dos EUA para o transito" },
+    { "id": "latam-jal-lax", "region": "EUA", "airline": "LATAM + JAL", "airlineCode": "LA", "viaCity": "Los Angeles", "viaIata": "LAX", "note": "Requer visto/ESTA dos EUA para o transito" }
   ]
 }
 </script>
 <script type="application/json" id="price-data">
-[
-  {
-    "timestamp": "2026-07-21T18:21:11Z",
-    "routeId": "overall",
-    "region": "Geral",
-    "airline": "TK",
-    "viaCity": null,
-    "departureAt": "2027-02-02T17:10:00-03:00",
-    "returnAt": "2027-02-28T10:10:00+09:00",
-    "price": 1241.0,
-    "currency": "usd",
-    "kind": "real"
-  },
-  {
-    "timestamp": "2026-07-21T18:21:11Z",
-    "routeId": "qatar-doh",
-    "region": "Oriente Medio",
-    "airline": "Qatar Airways",
-    "viaCity": "Doha",
-    "leg1Price": 679.0,
-    "leg1Date": "2026-11-17",
-    "leg2Price": 386.0,
-    "leg2Date": "2026-07-26",
-    "price": 1065.0,
-    "currency": "usd",
-    "kind": "estimate"
-  },
-  {
-    "timestamp": "2026-07-21T18:21:11Z",
-    "routeId": "emirates-dxb",
-    "region": "Oriente Medio",
-    "airline": "Emirates",
-    "viaCity": "Dubai",
-    "leg1Price": 518.0,
-    "leg1Date": "2026-10-24",
-    "leg2Price": 369.0,
-    "leg2Date": "2026-11-03",
-    "price": 887.0,
-    "currency": "usd",
-    "kind": "estimate"
-  },
-  {
-    "timestamp": "2026-07-21T18:21:11Z",
-    "routeId": "turkish-ist",
-    "region": "Oriente Medio",
-    "airline": "Turkish Airlines",
-    "viaCity": "Istambul",
-    "leg1Price": 457.0,
-    "leg1Date": "2026-11-05",
-    "leg2Price": 357.0,
-    "leg2Date": "2026-10-04",
-    "price": 814.0,
-    "currency": "usd",
-    "kind": "estimate"
-  },
-  {
-    "timestamp": "2026-07-21T18:21:11Z",
-    "routeId": "airfrance-cdg",
-    "region": "Europa",
-    "airline": "Air France",
-    "viaCity": "Paris",
-    "leg1Price": 490.0,
-    "leg1Date": "2026-07-22",
-    "leg2Price": 419.0,
-    "leg2Date": "2026-09-11",
-    "price": 909.0,
-    "currency": "usd",
-    "kind": "estimate"
-  },
-  {
-    "timestamp": "2026-07-21T18:21:11Z",
-    "routeId": "klm-ams",
-    "region": "Europa",
-    "airline": "KLM",
-    "viaCity": "Amsterda",
-    "leg1Price": 416.0,
-    "leg1Date": "2026-10-13",
-    "leg2Price": 388.0,
-    "leg2Date": "2026-08-22",
-    "price": 804.0,
-    "currency": "usd",
-    "kind": "estimate"
-  },
-  {
-    "timestamp": "2026-07-21T18:21:11Z",
-    "routeId": "latam-jal-lax",
-    "region": "EUA",
-    "airline": "LATAM + JAL",
-    "viaCity": "Los Angeles",
-    "leg1Price": 474.0,
-    "leg1Date": "2026-10-14",
-    "leg2Price": 230.0,
-    "leg2Date": "2026-07-29",
-    "price": 704.0,
-    "currency": "usd",
-    "kind": "estimate"
-  },
-  {
-    "timestamp": "2026-07-21T19:20:44Z",
-    "routeId": "overall",
-    "region": "Geral",
-    "airline": "TK",
-    "viaCity": null,
-    "departureAt": "2027-02-02T17:10:00-03:00",
-    "returnAt": "2027-02-28T10:10:00+09:00",
-    "price": 1241.0,
-    "currency": "usd",
-    "kind": "real"
-  }
-]
+[]
 </script>
 <style>
   .viz-root {
@@ -199,31 +35,32 @@
     --baseline:       #c3c2b7;
     --border:         rgba(11,11,11,0.10);
     --good:           #006300;
-    --series-1: #2a78d6;
+
+    --series-1: #2a78d6; --series-2: #1baf7a; --series-3: #eda100; --series-4: #008300;
+    --series-5: #4a3aa7; --series-6: #e34948; --series-7: #e87ba4; --series-8: #eb6834;
   }
   @media (prefers-color-scheme: dark) {
     .viz-root {
-      --surface-1:      #1a1a19;
-      --page-plane:     #0d0d0d;
-      --text-primary:   #ffffff;
-      --text-secondary: #c3c2b7;
-      --text-muted:     #898781;
-      --gridline:       #2c2c2a;
-      --baseline:       #383835;
-      --border:         rgba(255,255,255,0.10);
-      --good:           #0ca30c;
-      --series-1: #3987e5;
+      --surface-1: #1a1a19; --page-plane: #0d0d0d; --text-primary: #ffffff; --text-secondary: #c3c2b7;
+      --text-muted: #898781; --gridline: #2c2c2a; --baseline: #383835; --border: rgba(255,255,255,0.10);
+      --good: #0ca30c;
+      --series-1: #3987e5; --series-2: #199e70; --series-3: #c98500; --series-4: #008300;
+      --series-5: #9085e9; --series-6: #e66767; --series-7: #d55181; --series-8: #d95926;
     }
   }
   :root[data-theme="dark"] .viz-root {
     --surface-1: #1a1a19; --page-plane: #0d0d0d; --text-primary: #ffffff; --text-secondary: #c3c2b7;
     --text-muted: #898781; --gridline: #2c2c2a; --baseline: #383835; --border: rgba(255,255,255,0.10);
-    --good: #0ca30c; --series-1: #3987e5;
+    --good: #0ca30c;
+    --series-1: #3987e5; --series-2: #199e70; --series-3: #c98500; --series-4: #008300;
+    --series-5: #9085e9; --series-6: #e66767; --series-7: #d55181; --series-8: #d95926;
   }
   :root[data-theme="light"] .viz-root {
     --surface-1: #fcfcfb; --page-plane: #f9f9f7; --text-primary: #0b0b0b; --text-secondary: #52514e;
     --text-muted: #898781; --gridline: #e1e0d9; --baseline: #c3c2b7; --border: rgba(11,11,11,0.10);
-    --good: #006300; --series-1: #2a78d6;
+    --good: #006300;
+    --series-1: #2a78d6; --series-2: #1baf7a; --series-3: #eda100; --series-4: #008300;
+    --series-5: #4a3aa7; --series-6: #e34948; --series-7: #e87ba4; --series-8: #eb6834;
   }
 
   .viz-root {
@@ -248,12 +85,12 @@
     padding: 20px 22px; margin-bottom: 20px;
   }
   .hero-tile .label { font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; }
-  .hero-tile .value { font-size: 48px; font-weight: 600; line-height: 1.1; }
-  .hero-tile .value .cur { font-size: 20px; color: var(--text-muted); font-weight: 500; margin-right: 4px; }
+  .hero-tile .value { font-size: 44px; font-weight: 600; line-height: 1.1; }
+  .hero-tile .value .cur { font-size: 18px; color: var(--text-muted); font-weight: 500; margin-right: 4px; }
   .hero-tile .meta { font-size: 13px; color: var(--text-muted); margin-top: 8px; }
   .hero-tile .delta { font-size: 13px; margin-top: 4px; }
   .hero-tile .delta.down { color: var(--good); }
-  .hero-tile .delta.up { color: #e34948; }
+  .hero-tile .delta.up { color: var(--series-6); }
 
   section.card {
     background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
@@ -262,14 +99,18 @@
   section.card h2 { font-size: 15px; margin: 0 0 4px; font-weight: 600; }
   section.card .card-sub { font-size: 12.5px; color: var(--text-secondary); margin-bottom: 12px; }
 
+  .legend { display: flex; flex-wrap: wrap; gap: 12px 18px; margin: 6px 0 14px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-secondary); }
+  .legend-swatch { width: 14px; height: 2px; border-radius: 1px; }
+
   .chart-wrap { position: relative; min-width: 560px; }
   svg.chart { display: block; width: 100%; height: auto; overflow: visible; }
   .gridline { stroke: var(--gridline); stroke-width: 1; }
   .baseline { stroke: var(--baseline); stroke-width: 1; }
   .axis-label { fill: var(--text-muted); font-size: 11px; }
   .end-label { fill: var(--text-primary); font-size: 11.5px; font-weight: 600; }
-  .series-line { fill: none; stroke: var(--series-1); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .series-dot { stroke: var(--surface-1); stroke-width: 2; fill: var(--series-1); }
+  .series-line { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .series-dot { stroke: var(--surface-1); stroke-width: 2; }
   .empty-msg { fill: var(--text-muted); font-size: 13px; }
 
   .crosshair-line { stroke: var(--text-muted); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0; pointer-events: none; }
@@ -281,16 +122,21 @@
     min-width: 150px; z-index: 5;
   }
   .tooltip .t-date { color: var(--text-secondary); font-size: 11.5px; margin-bottom: 4px; }
+  .tooltip .t-row { display: flex; align-items: center; gap: 6px; padding: 1px 0; }
+  .tooltip .t-key { width: 10px; height: 2px; flex: none; border-radius: 1px; }
+  .tooltip .t-name { color: var(--text-secondary); flex: 1; }
   .tooltip .t-val { font-weight: 600; color: var(--text-primary); }
 
-  table.ref { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 620px; }
-  table.ref th, table.ref td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--gridline); }
-  table.ref th { color: var(--text-muted); font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: .02em; }
-  table.ref td.note { color: var(--text-secondary); font-size: 12px; }
-  table.ref a.check-link {
-    color: var(--series-1); text-decoration: none; font-size: 12.5px; white-space: nowrap;
-  }
-  table.ref a.check-link:hover { text-decoration: underline; }
+  table.cmp { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 680px; }
+  table.cmp th, table.cmp td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--gridline); }
+  table.cmp th { color: var(--text-muted); font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: .02em; }
+  table.cmp td.price { font-variant-numeric: tabular-nums; font-weight: 600; }
+  table.cmp td.note { color: var(--text-secondary); font-size: 12px; }
+  .badge { display: inline-block; font-size: 10.5px; padding: 2px 6px; border-radius: 5px; border: 1px solid var(--border); color: var(--text-secondary); }
+  .badge.real { color: var(--good); border-color: var(--good); }
+  .swatch-dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+  a.check-link { color: var(--series-1); text-decoration: none; font-size: 12.5px; white-space: nowrap; }
+  a.check-link:hover { text-decoration: underline; }
 
   footer.notes { font-size: 12px; color: var(--text-muted); line-height: 1.6; margin-top: 8px; }
   footer.notes p { margin: 0 0 8px; }
@@ -299,31 +145,32 @@
 <div class="viz-root">
   <header class="top">
     <h1>Passagens São Paulo → Tóquio</h1>
-    <div class="subline">Maratona de Tóquio · 07/03/2027 — monitoramento diário de preço (GRU → TYO)</div>
+    <div class="subline">Maratona de Tóquio · 07/03/2027 — monitoramento diário de preço real (GRU → Tóquio)</div>
     <div class="countdown" id="countdown"></div>
   </header>
 
   <div class="hero-tile" id="hero"></div>
 
   <section class="card">
-    <h2>Tendência de preço real</h2>
-    <div class="card-sub">Menor tarifa ida-e-volta GRU–TYO já vista em cache (Travelpayouts) — não discrimina companhia/escala, só o preço mais barato encontrado no dia.</div>
+    <h2>Tendência de preço</h2>
+    <div class="card-sub">Preços reais (Google Flights via SerpApi). Linha azul = ida-e-volta direto sem escala assumida; demais linhas = itinerário multi-cidade real com escala na cidade indicada.</div>
+    <div class="legend" id="legend"></div>
     <div class="chart-wrap">
-      <svg class="chart" id="chart" viewBox="0 0 980 280" preserveAspectRatio="xMidYMid meet"></svg>
+      <svg class="chart" id="chart" viewBox="0 0 980 320" preserveAspectRatio="xMidYMid meet"></svg>
       <div class="tooltip" id="tooltip"></div>
     </div>
   </section>
 
   <section class="card">
-    <h2>Rotas de referência (conferir manualmente)</h2>
-    <div class="card-sub">A API gratuita não cota itinerário com escala/stopover — os preços por rota abaixo não são automáticos. Use o link para conferir a tarifa real do dia no Google Flights.</div>
-    <table class="ref" id="refTable"></table>
+    <h2>Comparativo atual</h2>
+    <div class="card-sub">Preço real mais recente por rota — itinerário GRU → escala → Tóquio → GRU, datas 27/fev (ida), 01/mar (conexão), 20/mar (volta).</div>
+    <table class="cmp" id="cmpTable"></table>
   </section>
 
   <section class="card">
     <footer class="notes">
-      <p><strong>Fonte:</strong> Travelpayouts Data API (cache de buscas reais da Aviasales e parceiros). O número acima é a tarifa ida-e-volta mais barata já cacheada para GRU–TYO — um dado real, mas sem garantia de estar dentro da sua janela exata de viagem (a data da oferta encontrada aparece abaixo do número).</p>
-      <p>Não mostramos mais preço estimado por rota com escala: somar duas tarifas só-ida de datas diferentes não reflete o preço real de um bilhete único com stopover (chegou a ficar ~2x abaixo do mercado nos testes). Para essas rotas, confira o preço real pelo link do Google Flights.</p>
+      <p><strong>Fonte:</strong> SerpApi Google Flights API — mesmo motor de busca do site do Google Flights, preços reais (não estimativa/soma de trechos).</p>
+      <p>"Geral" é uma busca simples ida-e-volta GRU↔Tóquio, sem itinerário fixo. As demais rotas são buscas multi-cidade reais simulando um stopover de alguns dias na cidade de escala — o preço reflete o itinerário completo, mas a duração exata do stopover e as datas podem não ser as que você prefere; use o link "Conferir" pra ajustar no Google Flights.</p>
     </footer>
   </section>
 </div>
@@ -332,10 +179,20 @@
 (function () {
   const routesConfig = JSON.parse(document.getElementById('routes-config').textContent);
   const priceData = JSON.parse(document.getElementById('price-data').textContent);
+  const routeMeta = Object.fromEntries(routesConfig.routes.map(r => [r.id, r]));
 
-  const overallSeries = priceData
-    .filter(d => d.routeId === 'overall')
-    .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+  const SERIES_ORDER = ['overall', ...routesConfig.routes.map(r => r.id)];
+  const SERIES_LABEL = {
+    overall: 'Geral (ida-e-volta direto)',
+    ...Object.fromEntries(routesConfig.routes.map(r => [r.id, `${r.airline} · ${r.viaCity}`]))
+  };
+  const seriesColor = (id) => `var(--series-${SERIES_ORDER.indexOf(id) + 1})`;
+
+  const byRoute = {};
+  for (const row of priceData) {
+    (byRoute[row.routeId] = byRoute[row.routeId] || []).push(row);
+  }
+  for (const id in byRoute) byRoute[id].sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
   const fmtMoney = (v, cur) => `${(cur || 'usd').toUpperCase()} ${Math.round(v).toLocaleString('pt-BR')}`;
   const fmtDate = (iso) => new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' });
@@ -348,50 +205,62 @@
   document.getElementById('countdown').innerHTML =
     days >= 0 ? `<strong>${days}</strong>&nbsp;dias até a Maratona de Tóquio` : 'Maratona já ocorreu';
 
-  // ---------- hero tile ----------
-  const latest = overallSeries[overallSeries.length - 1];
-  const prev = overallSeries.length > 1 ? overallSeries[overallSeries.length - 2] : null;
+  // ---------- hero tile (overall) ----------
+  const latestByRoute = {};
+  for (const id in byRoute) latestByRoute[id] = byRoute[id][byRoute[id].length - 1];
+  const overallSeries = byRoute['overall'] || [];
+  const overallLatest = latestByRoute['overall'];
+  const overallPrev = overallSeries.length > 1 ? overallSeries[overallSeries.length - 2] : null;
   const hero = document.getElementById('hero');
-  if (latest) {
+  if (overallLatest) {
     let deltaHtml = '';
-    if (prev) {
-      const diff = latest.price - prev.price;
+    if (overallPrev) {
+      const diff = overallLatest.price - overallPrev.price;
       const cls = diff <= 0 ? 'down' : 'up';
       const sign = diff > 0 ? '+' : '';
       deltaHtml = `<div class="delta ${cls}">${sign}${Math.round(diff)} desde última checagem</div>`;
     }
     hero.innerHTML = `
-      <div class="label">Menor tarifa real encontrada · GRU ↔ TYO</div>
-      <div class="value"><span class="cur">${latest.currency.toUpperCase()}</span>${Math.round(latest.price).toLocaleString('pt-BR')}</div>
-      <div class="meta">${latest.airline || '—'} · ida ${latest.departureAt ? fmtDate(latest.departureAt) : '—'} · volta ${latest.returnAt ? fmtDate(latest.returnAt) : '—'}</div>
+      <div class="label">Menor tarifa real · ida-e-volta direto GRU ↔ Tóquio</div>
+      <div class="value"><span class="cur">${overallLatest.currency.toUpperCase()}</span>${Math.round(overallLatest.price).toLocaleString('pt-BR')}</div>
+      <div class="meta">${overallLatest.airline || '—'} · ida ${overallLatest.departureAt ? fmtDate(overallLatest.departureAt) : '—'} · volta ${overallLatest.returnAt ? fmtDate(overallLatest.returnAt) : '—'}</div>
       ${deltaHtml}`;
   } else {
-    hero.innerHTML = `<div class="label">Menor tarifa real encontrada · GRU ↔ TYO</div><div class="meta">Ainda sem dados — aguardando primeira busca.</div>`;
+    hero.innerHTML = `<div class="label">Menor tarifa real · ida-e-volta direto GRU ↔ Tóquio</div><div class="meta">Ainda sem dados — aguardando primeira busca.</div>`;
   }
 
-  // ---------- chart (single series) ----------
+  // ---------- legend ----------
+  document.getElementById('legend').innerHTML = SERIES_ORDER
+    .filter(id => byRoute[id])
+    .map(id => `<div class="legend-item"><span class="legend-swatch" style="background:${seriesColor(id)}"></span>${SERIES_LABEL[id]}</div>`)
+    .join('');
+
+  // ---------- chart ----------
   const svg = document.getElementById('chart');
   const tooltip = document.getElementById('tooltip');
-  const W = 980, H = 280, PAD_L = 56, PAD_R = 16, PAD_T = 16, PAD_B = 30;
+  const W = 980, H = 320, PAD_L = 56, PAD_R = 16, PAD_T = 16, PAD_B = 30;
   const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B;
-
-  let svgHtml = '';
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
 
-  if (overallSeries.length === 0) {
-    svgHtml = `<text class="empty-msg" x="${W / 2}" y="${H / 2}" text-anchor="middle">Sem dados ainda</text>`;
-    svg.innerHTML = svgHtml;
+  const allTimestamps = [...new Set(priceData.map(d => d.timestamp))].sort((a, b) => new Date(a) - new Date(b));
+
+  if (allTimestamps.length === 0) {
+    svg.innerHTML = `<text class="empty-msg" x="${W / 2}" y="${H / 2}" text-anchor="middle">Sem dados ainda</text>`;
   } else {
-    const timestamps = overallSeries.map(d => d.timestamp);
-    const prices = overallSeries.map(d => d.price);
-    let yMin = Math.min(...prices), yMax = Math.max(...prices);
+    const allPrices = priceData.map(d => d.price);
+    let yMin = Math.min(...allPrices), yMax = Math.max(...allPrices);
     const yPad = Math.max((yMax - yMin) * 0.15, 20);
     yMin = Math.max(0, Math.floor((yMin - yPad) / 50) * 50);
     yMax = Math.ceil((yMax + yPad) / 50) * 50;
 
-    const xFor = (i) => timestamps.length === 1 ? PAD_L + plotW / 2 : PAD_L + (i / (timestamps.length - 1)) * plotW;
+    const xFor = (ts) => {
+      if (allTimestamps.length === 1) return PAD_L + plotW / 2;
+      const idx = allTimestamps.indexOf(ts);
+      return PAD_L + (idx / (allTimestamps.length - 1)) * plotW;
+    };
     const yFor = (v) => PAD_T + plotH - ((v - yMin) / (yMax - yMin || 1)) * plotH;
 
+    let svgHtml = '';
     const ySteps = 4;
     for (let i = 0; i <= ySteps; i++) {
       const v = yMin + ((yMax - yMin) * i) / ySteps;
@@ -400,52 +269,72 @@
       svgHtml += `<text class="axis-label" x="${PAD_L - 8}" y="${y + 4}" text-anchor="end">${Math.round(v).toLocaleString('pt-BR')}</text>`;
     }
     svgHtml += `<line class="baseline" x1="${PAD_L}" x2="${W - PAD_R}" y1="${PAD_T + plotH}" y2="${PAD_T + plotH}" />`;
-    timestamps.forEach((ts, i) => {
-      const x = xFor(i);
+    allTimestamps.forEach((ts) => {
+      const x = xFor(ts);
       svgHtml += `<text class="axis-label" x="${x}" y="${H - 8}" text-anchor="middle">${fmtDate(ts)}</text>`;
     });
 
-    const coords = prices.map((p, i) => [xFor(i), yFor(p)]);
-    if (coords.length > 1) {
-      const d = coords.map((c, i) => (i === 0 ? `M${c[0]},${c[1]}` : `L${c[0]},${c[1]}`)).join(' ');
-      svgHtml += `<path class="series-line" d="${d}" />`;
+    let cheapestRouteId = null, cheapestVal = Infinity;
+    for (const id in latestByRoute) {
+      if (id === 'overall') continue;
+      if (latestByRoute[id].price < cheapestVal) { cheapestVal = latestByRoute[id].price; cheapestRouteId = id; }
     }
-    coords.forEach(([x, y]) => {
-      svgHtml += `<circle class="series-dot" cx="${x}" cy="${y}" r="4" />`;
+
+    SERIES_ORDER.forEach((id) => {
+      const pts = byRoute[id];
+      if (!pts || !pts.length) return;
+      const color = seriesColor(id);
+      const coords = pts.map(p => [xFor(p.timestamp), yFor(p.price)]);
+      if (coords.length > 1) {
+        const d = coords.map((c, i) => (i === 0 ? `M${c[0]},${c[1]}` : `L${c[0]},${c[1]}`)).join(' ');
+        svgHtml += `<path class="series-line" d="${d}" stroke="${color}" />`;
+      }
+      coords.forEach(([x, y]) => {
+        svgHtml += `<circle class="series-dot" cx="${x}" cy="${y}" r="4" fill="${color}" />`;
+      });
+      if (id === 'overall' || id === cheapestRouteId) {
+        const [lx, ly] = coords[coords.length - 1];
+        const label = id === 'overall' ? 'geral' : (routeMeta[id] ? routeMeta[id].viaCity : id);
+        svgHtml += `<text class="end-label" x="${lx + 8}" y="${ly + 4}">${label}</text>`;
+      }
     });
-    const [lx, ly] = coords[coords.length - 1];
-    svgHtml += `<text class="end-label" x="${lx + 8}" y="${ly + 4}">${fmtMoney(prices[prices.length - 1], overallSeries[overallSeries.length - 1].currency)}</text>`;
 
     svgHtml += `<line class="crosshair-line" id="crosshair" x1="0" x2="0" y1="${PAD_T}" y2="${PAD_T + plotH}" />`;
     svgHtml += `<rect class="hover-capture" id="hoverCapture" x="${PAD_L}" y="${PAD_T}" width="${plotW}" height="${plotH}" />`;
-
     svg.innerHTML = svgHtml;
 
     const crosshair = document.getElementById('crosshair');
     const hoverCapture = document.getElementById('hoverCapture');
     const chartWrap = document.querySelector('.chart-wrap');
 
-    function nearestIndex(mouseX) {
-      if (timestamps.length === 1) return 0;
+    function nearestTsIndex(mouseX) {
+      if (allTimestamps.length === 1) return 0;
       const rel = (mouseX - PAD_L) / plotW;
-      return Math.min(Math.max(Math.round(rel * (timestamps.length - 1)), 0), timestamps.length - 1);
+      return Math.min(Math.max(Math.round(rel * (allTimestamps.length - 1)), 0), allTimestamps.length - 1);
     }
 
     hoverCapture.addEventListener('pointermove', (e) => {
       const rect = svg.getBoundingClientRect();
       const scaleX = W / rect.width;
       const mouseX = (e.clientX - rect.left) * scaleX;
-      const idx = nearestIndex(mouseX);
-      const x = xFor(idx);
+      const idx = nearestTsIndex(mouseX);
+      const ts = allTimestamps[idx];
+      const x = xFor(ts);
       crosshair.setAttribute('x1', x);
       crosshair.setAttribute('x2', x);
       crosshair.style.opacity = 1;
-      tooltip.innerHTML = `<div class="t-date">${fmtDateTime(timestamps[idx])}</div><div class="t-val">${fmtMoney(prices[idx], overallSeries[idx].currency)}</div>`;
+      let rows = '';
+      SERIES_ORDER.forEach((id) => {
+        const pt = (byRoute[id] || []).find(p => p.timestamp === ts);
+        if (!pt) return;
+        rows += `<div class="t-row"><span class="t-key" style="background:${seriesColor(id)}"></span><span class="t-name">${SERIES_LABEL[id]}</span><span class="t-val">${fmtMoney(pt.price, pt.currency)}</span></div>`;
+      });
+      tooltip.innerHTML = `<div class="t-date">${fmtDateTime(ts)}</div>${rows}`;
       tooltip.style.opacity = 1;
       const wrapRect = chartWrap.getBoundingClientRect();
       let left = e.clientX - wrapRect.left + 14;
       let top = e.clientY - wrapRect.top - 10;
-      if (left + 140 > wrapRect.width) left = e.clientX - wrapRect.left - 154;
+      if (left + 170 > wrapRect.width) left = e.clientX - wrapRect.left - 184;
       tooltip.style.left = left + 'px';
       tooltip.style.top = Math.max(top, 0) + 'px';
     });
@@ -455,21 +344,50 @@
     });
   }
 
-  // ---------- reference table ----------
-  const rows = routesConfig.routes.map(r => {
-    const query = encodeURIComponent(`voos de Sao Paulo para Toquio via ${r.viaCity}`);
-    const link = `https://www.google.com/travel/flights?q=${query}`;
-    return `
+  // ---------- comparison table ----------
+  const rowsHtml = [];
+  if (overallLatest) {
+    rowsHtml.push(`
       <tr>
-        <td>${r.region}</td>
-        <td>${r.airline}</td>
+        <td><span class="swatch-dot" style="background:${seriesColor('overall')}"></span>Geral</td>
+        <td>${overallLatest.airline || '—'}</td>
+        <td>—</td>
+        <td class="price">${fmtMoney(overallLatest.price, overallLatest.currency)}</td>
+        <td><span class="badge real">real</span></td>
+        <td class="note">Ida ${overallLatest.departureAt ? fmtDate(overallLatest.departureAt) : '—'} · volta ${overallLatest.returnAt ? fmtDate(overallLatest.returnAt) : '—'}</td>
+        <td><a class="check-link" target="_blank" rel="noopener" href="https://www.google.com/travel/flights?q=${encodeURIComponent('voos de Sao Paulo para Toquio')}">Conferir →</a></td>
+      </tr>`);
+  }
+  routesConfig.routes.forEach((r) => {
+    const row = latestByRoute[r.id];
+    const link = `https://www.google.com/travel/flights?q=${encodeURIComponent(`voos de Sao Paulo para Toquio via ${r.viaCity}`)}`;
+    if (!row) {
+      rowsHtml.push(`
+        <tr>
+          <td><span class="swatch-dot" style="background:${seriesColor(r.id)}"></span>${r.region}</td>
+          <td>${r.airline}</td>
+          <td>${r.viaCity}</td>
+          <td class="price">—</td>
+          <td><span class="badge">sem dado</span></td>
+          <td class="note">${r.note || ''}</td>
+          <td><a class="check-link" target="_blank" rel="noopener" href="${link}">Conferir →</a></td>
+        </tr>`);
+      return;
+    }
+    rowsHtml.push(`
+      <tr>
+        <td><span class="swatch-dot" style="background:${seriesColor(r.id)}"></span>${r.region}</td>
+        <td>${row.airline || r.airline}</td>
         <td>${r.viaCity}</td>
-        <td class="note">${r.note || ''}</td>
-        <td><a class="check-link" href="${link}" target="_blank" rel="noopener">Conferir no Google Flights →</a></td>
-      </tr>`;
+        <td class="price">${fmtMoney(row.price, row.currency)}</td>
+        <td><span class="badge real">real</span></td>
+        <td class="note">${r.note ? r.note + ' · ' : ''}Ida ${row.departureAt ? fmtDate(row.departureAt) : '—'} · volta ${row.returnAt ? fmtDate(row.returnAt) : '—'}</td>
+        <td><a class="check-link" target="_blank" rel="noopener" href="${link}">Conferir →</a></td>
+      </tr>`);
   });
-  document.getElementById('refTable').innerHTML = `
-    <thead><tr><th>Região</th><th>Companhia</th><th>Escala</th><th>Nota</th><th>Preço real</th></tr></thead>
-    <tbody>${rows.join('')}</tbody>`;
+
+  document.getElementById('cmpTable').innerHTML = `
+    <thead><tr><th>Região</th><th>Companhia</th><th>Escala</th><th>Preço</th><th>Tipo</th><th>Datas</th><th></th></tr></thead>
+    <tbody>${rowsHtml.join('')}</tbody>`;
 })();
 </script>

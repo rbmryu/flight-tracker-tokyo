@@ -1,11 +1,12 @@
 {
   "search": {
     "originIata": "GRU",
-    "destinationCity": "TYO",
-    "targetDepartureMonth": "2027-02",
-    "targetReturnMonth": "2027-03",
-    "currency": "usd",
-    "note": "TYO agrega Narita e Haneda no cache da Travelpayouts. A API nao filtra por data exata: 'overall' pega a tarifa ida-e-volta mais barata ja cacheada (data real exibida no dashboard); as estimativas por rota somam 2 trechos de ida separados (one_way) mais baratos ja cacheados. airlineCode e so informativo."
+    "destinationIata": "NRT",
+    "outboundDate": "2027-02-27",
+    "connectDate": "2027-03-01",
+    "returnDate": "2027-03-20",
+    "currency": "USD",
+    "note": "SerpApi Google Flights: overall e round trip simples GRU-NRT (type=1). Cada rota e busca multi-cidade real (type=3) GRU->via->NRT->GRU. Todos os precos sao reais."
   },
   "routes": [
     { "id": "qatar-doh", "region": "Oriente Medio", "airline": "Qatar Airways", "airlineCode": "QR", "viaCity": "Doha", "viaIata": "DOH", "note": "Stopover gratuito oficial da Qatar em Doha" },

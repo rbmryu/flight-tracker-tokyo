@@ -6,31 +6,41 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 ROUTES_PATH = os.path.join(ROOT, "routes.json")
 HISTORY_PATH = os.path.join(ROOT, "data", "price_history.json")
 DASHBOARD_PATH = os.path.join(ROOT, "dashboard.html")
-API_BASE = "https://api.travelpayouts.com"
+API_BASE = "https://serpapi.com/search.json"
 
-def api_get(path, params, token):
+def api_get(params, key):
+    params = dict(params)
+    params["api_key"] = key
     query = urllib.parse.urlencode(params)
-    url = f"{API_BASE}{path}?{query}"
-    req = urllib.request.Request(url, headers={"x-access-token": token})
+    url = f"{API_BASE}?{query}"
     try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
+        with urllib.request.urlopen(url, timeout=30) as resp:
             return json.loads(resp.read().decode("utf-8"))
     except Exception as exc:
-        print(f"AVISO: falha ao consultar {path} {params}: {exc}", file=sys.stderr)
+        print(f"AVISO: falha ao consultar SerpApi {params.get('type')}: {exc}", file=sys.stderr)
         return None
 
-def get_cheapest_roundtrip(origin, destination, currency, token):
-    resp = api_get("/v1/prices/cheap", {"origin": origin, "destination": destination, "currency": currency}, token)
-    if not resp or not resp.get("success") or not resp.get("data"):
+def cheapest_flight(resp):
+    if not resp:
         return None
-    dest_node = next(iter(resp["data"].values()), None)
-    if not dest_node:
-        return None
-    offers = list(dest_node.values())
+    offers = list(resp.get("best_flights", [])) + list(resp.get("other_flights", []))
     if not offers:
         return None
     cheapest = min(offers, key=lambda o: float(o["price"]))
-    return {"price": float(cheapest["price"]), "airline": cheapest.get("airline"), "departureAt": cheapest.get("departure_at"), "returnAt": cheapest.get("return_at")}
+    flights = cheapest.get("flights", [])
+    airline = flights[0]["airline"] if flights else None
+    departure_at = flights[0]["departure_airport"]["time"] if flights else None
+    return_at = flights[-1]["arrival_airport"]["time"] if flights else None
+    return {"price": float(cheapest["price"]), "airline": airline, "departureAt": departure_at, "returnAt": return_at}
+
+def fetch_overall(origin, destination, outbound_date, return_date, currency, key):
+    resp = api_get({"engine": "google_flights", "type": 1, "departure_id": origin, "arrival_id": destination, "outbound_date": outbound_date, "return_date": return_date, "currency": currency, "hl": "en"}, key)
+    return cheapest_flight(resp)
+
+def fetch_route(origin, via_iata, destination, out_date, connect_date, return_date, currency, key):
+    legs = [{"departure_id": origin, "arrival_id": via_iata, "date": out_date}, {"departure_id": via_iata, "arrival_id": destination, "date": connect_date}, {"departure_id": destination, "arrival_id": origin, "date": return_date}]
+    resp = api_get({"engine": "google_flights", "type": 3, "multi_city_json": json.dumps(legs), "currency": currency, "hl": "en"}, key)
+    return cheapest_flight(resp)
 
 def load_json(path, default):
     if not os.path.exists(path):
@@ -40,9 +50,9 @@ def load_json(path, default):
         return json.loads(raw) if raw else default
 
 def main():
-    token = os.environ.get("TRAVELPAYOUTS_TOKEN")
-    if not token:
-        print("ERRO: TRAVELPAYOUTS_TOKEN nao definida.", file=sys.stderr); sys.exit(1)
+    key = os.environ.get("SERPAPI_KEY")
+    if not key:
+        print("ERRO: SERPAPI_KEY nao definida.", file=sys.stderr); sys.exit(1)
     routes_config = load_json(ROUTES_PATH, None)
     if routes_config is None:
         print(f"ERRO: {ROUTES_PATH} nao encontrado.", file=sys.stderr); sys.exit(1)
@@ -50,12 +60,19 @@ def main():
     search = routes_config["search"]
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     new_entries = []
-    overall = get_cheapest_roundtrip(search["originIata"], search["destinationCity"], search["currency"], token)
+    overall = fetch_overall(search["originIata"], search["destinationIata"], search["outboundDate"], search["returnDate"], search["currency"], key)
     if overall:
         new_entries.append({"timestamp": timestamp, "routeId": "overall", "region": "Geral", "airline": overall["airline"], "viaCity": None, "departureAt": overall["departureAt"], "returnAt": overall["returnAt"], "price": overall["price"], "currency": search["currency"], "kind": "real"})
         print(f"overall: {search['currency']} {overall['price']} (cia {overall['airline']})")
     else:
         print("AVISO: overall sem oferta encontrada", file=sys.stderr)
+    for route in routes_config["routes"]:
+        result = fetch_route(search["originIata"], route["viaIata"], search["destinationIata"], search["outboundDate"], search["connectDate"], search["returnDate"], search["currency"], key)
+        if result:
+            new_entries.append({"timestamp": timestamp, "routeId": route["id"], "region": route["region"], "airline": result["airline"], "viaCity": route["viaCity"], "departureAt": result["departureAt"], "returnAt": result["returnAt"], "price": result["price"], "currency": search["currency"], "kind": "real"})
+            print(f"{route['id']}: {search['currency']} {result['price']} (cia {result['airline']}, via {route['viaCity']})")
+        else:
+            print(f"AVISO: {route['id']} sem oferta encontrada", file=sys.stderr)
     history.extend(new_entries)
     os.makedirs(os.path.dirname(HISTORY_PATH), exist_ok=True)
     with open(HISTORY_PATH, "w", encoding="utf-8") as f:
