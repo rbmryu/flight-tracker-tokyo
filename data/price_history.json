@@ -694,5 +694,101 @@
     "price": 1697.0,
     "currency": "USD",
     "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-29T11:03:05Z",
+    "routeId": "overall",
+    "region": "Geral",
+    "airline": "American",
+    "viaCity": null,
+    "departureAt": "2027-02-27 22:45",
+    "returnAt": "2027-03-01 15:40",
+    "price": 1701.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-29T11:03:05Z",
+    "routeId": "qatar-doh",
+    "region": "Oriente Medio",
+    "airline": "Iberia",
+    "viaCity": "Doha",
+    "departureAt": "2027-02-27 15:10",
+    "returnAt": "2027-02-28 16:40",
+    "price": 3761.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-29T11:03:05Z",
+    "routeId": "emirates-dxb",
+    "region": "Oriente Medio",
+    "airline": "Emirates",
+    "viaCity": "Dubai",
+    "departureAt": "2027-02-27 01:30",
+    "returnAt": "2027-02-27 22:35",
+    "price": 1607.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-29T11:03:05Z",
+    "routeId": "turkish-ist",
+    "region": "Oriente Medio",
+    "airline": "Lufthansa",
+    "viaCity": "Istambul",
+    "departureAt": "2027-02-27 18:45",
+    "returnAt": "2027-02-28 18:10",
+    "price": 8422.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-29T11:03:05Z",
+    "routeId": "airfrance-cdg",
+    "region": "Europa",
+    "airline": "Ethiopian",
+    "viaCity": "Paris",
+    "departureAt": "2027-02-27 01:30",
+    "returnAt": "2027-02-28 06:30",
+    "price": 2550.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-29T11:03:05Z",
+    "routeId": "klm-ams",
+    "region": "Europa",
+    "airline": "LATAM",
+    "viaCity": "Amsterda",
+    "departureAt": "2027-02-27 22:55",
+    "returnAt": "2027-02-28 14:45",
+    "price": 7143.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-29T11:03:05Z",
+    "routeId": "american-dfw",
+    "region": "EUA",
+    "airline": "American",
+    "viaCity": "Dallas",
+    "departureAt": "2027-02-27 22:45",
+    "returnAt": "2027-02-28 06:15",
+    "price": 1701.0,
+    "currency": "USD",
+    "kind": "real"
+  },
+  {
+    "timestamp": "2026-07-29T11:03:05Z",
+    "routeId": "latam-jal-lax",
+    "region": "EUA",
+    "airline": "United",
+    "viaCity": "Los Angeles",
+    "departureAt": "2027-02-27 22:15",
+    "returnAt": "2027-02-28 09:27",
+    "price": 2044.0,
+    "currency": "USD",
+    "kind": "real"
   }
 ]
